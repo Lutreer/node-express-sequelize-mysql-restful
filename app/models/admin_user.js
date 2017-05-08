@@ -23,14 +23,8 @@ module.exports = function (sequelize, DataTypes) {
         lastLoginAt: DataTypes.dateTime
     }, {
         tableName: 'admin_user',
-        comment: '用户登录信息',// 备注
-        classMethods: {
-            associate: function (models) {
-                User.hasMany(models.Address, {
-                    foreignKey: 'userId'
-                })
-            }
-        }
+        comment: '管理员登录信息',// 备注
+        classMethods: {}
     });
 
 
