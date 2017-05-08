@@ -5,16 +5,18 @@ var express = require('express');
 var app = express();
 
 var routes = require('./app/routes');
+var middlewares = require('./app/middlewares')
+
+// middleware
+for (m in middlewares) {
+    app.use(middlewares[m])
+}
 
 // router（分模块）
 for(route in routes) {
   app.use(route, routes[route])
 }
 
-// middleware
-for(middlewares in middleware) {
-    app.use(middleware)
-}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

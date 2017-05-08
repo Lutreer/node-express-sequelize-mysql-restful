@@ -7,6 +7,8 @@ var path = require("path");
 // 整合所有路由
 var routes = {}
 
+// 文件名是一级路由.eg,/user/create
+
 fs
 .readdirSync(__dirname)
 .filter(function (file) {

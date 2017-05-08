@@ -3,9 +3,9 @@
  */
 "use strict";
 
-module.exports = function(sequelize, DataTypes) {
-    var User = sequelize.define('User', {
-        id:{
+module.exports = function (sequelize, DataTypes) {
+    var AdminUser = sequelize.define('AdminUser', {
+        id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             primaryKey: true,
@@ -15,16 +15,17 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(40),
             allowNull: true,
         },
-        account:DataTypes.STRING(18),//varchar(18) 默认 255
-        phone:DataTypes.STRING(11),
-        password:DataTypes.STRING(18),
-        sex:DataTypes.INTEGER(1),
-        photo:DataTypes.TEXT
+        account: DataTypes.STRING(18),//varchar(18) 默认 255
+        phone: DataTypes.STRING(11),
+        password: DataTypes.STRING(64),
+        sex: DataTypes.INTEGER(1),
+        photo: DataTypes.TEXT,
+        lastLoginAt: DataTypes.dateTime
     }, {
-        tableName:'user',
+        tableName: 'admin_user',
         comment: '用户登录信息',// 备注
         classMethods: {
-            associate: function(models) {
+            associate: function (models) {
                 User.hasMany(models.Address, {
                     foreignKey: 'userId'
                 })
